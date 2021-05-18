@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+import argparse
+
+description = "."
+parser = argparse.ArgumentParser(description=description)
+parser.add_argument('--list', dest='list', help='IP addresses list.')
+args = parser.parse_args()
+
 iots = list()
 
 def exploit(host, thread):
