@@ -1,6 +1,6 @@
 # RomBuster
 
-**RomPager** is an exploitation tool that allows to disclosure network device credentials.
+**RomBuster** is a `RomPager` exploitation tool that allows to disclosure network router admin password.
 
 ## Vulnerability disclosure
 
