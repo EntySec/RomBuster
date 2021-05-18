@@ -4,6 +4,7 @@ import argparse
 
 from core.exploit import Exploit
 
+
 class CLI(Exploit):
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
