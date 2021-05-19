@@ -35,7 +35,7 @@ class CLI(Exploit):
     parser.add_argument('--ip-list', dest='list', help='IP addresses list.')
     args = parser.parse_args()
 
-    def start():
+    def start(self):
         with open(self.args.list, 'r') as f:
             lines = f.read().strip().split('\n')
             for line in lines:
