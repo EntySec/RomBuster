@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 #
@@ -24,17 +25,26 @@
 # SOFTWARE.
 #
 
-import os
-
 from setuptools import setup, find_packages
 
-setup(name='hatvenom',
+setup(name='rombuster',
       version='1.0',
       description='RomBuster',
       url='http://github.com/EntySec/RomBuster',
       author='EntySec',
       author_email='entysec@gmail.com',
       license='MIT',
+      python_requires='>=3.7.0',
       packages=find_packages(),
+      entry_points={
+          "console_scripts": [
+                "rombuster = rombuster:main"
+          ]
+      },
+      classifiers=[
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+      ],
       zip_safe=False
 )
