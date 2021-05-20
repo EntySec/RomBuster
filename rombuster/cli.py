@@ -27,18 +27,31 @@
 import argparse
 
 from .exploit import Exploit
+from .badges import Badges
 
 
-class RomBusterCLI(Exploit):
+class RomBusterCLI(Exploit, Badges):
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('--ip-list', dest='list', help='IP addresses list.')
+    parser.add_argument('--list', dest='list', help='Addresses list.')
+    parser.add_argument('--address', dest='address', help='Address.')
     args = parser.parse_args()
 
     def start(self):
-        with open(self.args.list, 'r') as f:
-            lines = f.read().strip().split('\n')
-            for line in lines:
-                self.exploit(line)
-        for credential in self.credentials:
-            print(credential)
+        if self.args.list:
+            with open(self.args.list, 'r') as f:
+                lines = f.read().strip().split('\n')
+                for line in lines:
+                    self.exploit(line)
+            for credential in self.credentials:
+                self.print_success(credential)
+        elif self.args.address:
+            self.exploit(self.args.address)
+            for credential in self.credentials:
+                self.print_success(credential)
+        else:
+            self.print_error("No list or address specified!")
+
+def main():
+    cli = RomBusterCLI()
+    cli.start()
