@@ -53,16 +53,16 @@ class RomBusterCLI(RomBuster, Badges):
                 self.print_process(f"({host}) - extracting credentials...")
                 for username in creds.keys():
                     return f"({host}) - {username}:{creds[username]}"
-            else:
-                self.print_error(f"({host}) - rom access denied!")
-        else:
-            self.print_error(f"({host}) - connection rejected!")
+            self.print_error(f"({host}) - rom access denied!")
+            return None
+        self.print_error(f"({host}) - connection rejected!")
+        return None
 
     def thread(self, number, host):
-        self.print_process(f"Thread #{str(number)} processing...")
+        self.print_process(f"Initializing thread #{str(number)}...")
         result = self.hack(host)
         thread_credentials.append(result)
-        self.print_information(f"Thread #{str(number)} finished.")
+        self.print_information(f"Thread #{str(number)} completed.")
         
     def start(self):
         if self.args.list:
@@ -71,11 +71,18 @@ class RomBusterCLI(RomBuster, Badges):
                 line_number = 0
                 for line in lines:
                     if not self.args.threads:
-                        self.hack(line)
+                        result = self.hack(line)
                     else:
                         process = threading.Thread(thread, args=[line_number, line])
                         process.start()
                     line_number += 1
+                if not self.args.threads:
+                    if result:
+                        self.print_success(result)
+                else:
+                    if self.thread_credentials:
+                        for credential in self.thread_credentials:
+                            self.print_success(credential)
         elif self.args.address:
             self.hack(self.args.address)
         else:
