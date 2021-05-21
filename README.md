@@ -10,6 +10,19 @@ pip3 install git+https://github.com/EntySec/RomBuster
 
 ## RomBuster CLI
 
+```shell
+usage: rombuster [-h] [--threads] [--output OUTPUT] [--input INPUT] [--address ADDRESS]
+
+RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --threads          Use threads for fastest work. [best]
+  --output OUTPUT    Output result to file.
+  --input INPUT      Input file of addresses.
+  --address ADDRESS  Single address.
+```
+
 Let's hack my router just for fun.
 
 ```shell
