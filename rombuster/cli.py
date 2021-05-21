@@ -75,7 +75,7 @@ class RomBusterCLI(RomBuster, Badges):
                         if result:
                             self.print_success(result)
                     else:
-                        process = threading.Thread(self.thread, args=[line_number, line])
+                        process = threading.Thread(target=self.thread, args=[line_number, line])
                         process.start()
                     line_number += 1
                 if self.args.threads:
