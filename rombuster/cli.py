@@ -32,13 +32,12 @@ from .badges import Badges
 
 
 class RomBusterCLI(RomBuster, Badges):
-    thread_credentials = list()
-
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--threads', dest='threads', action='store_true', help='Use threads for fastest work. [best]')
-    parser.add_argument('--list', dest='list', help='Addresses list.')
-    parser.add_argument('--address', dest='address', help='Address.')
+    parser.add_argument('--output', dest='output', help='Output result to file.')
+    parser.add_argument('--input', dest='list', help='Input file of addresses.')
+    parser.add_argument('--address', dest='address', help='Single address.')
     args = parser.parse_args()
 
     def hack(self, host):
@@ -62,33 +61,42 @@ class RomBusterCLI(RomBuster, Badges):
         self.print_process(f"Initializing thread #{str(number)}...")
         result = self.hack(host)
         if result:
-            self.thread_credentials.append(result)
+            if not self.args.output:
+                self.print_success(result)
+            else:
+                with open(self.args.output, 'a') as f:
+                    f.write(result)
         self.print_information(f"Thread #{str(number)} completed.")
         
     def start(self):
-        if self.args.list:
-            with open(self.args.list, 'r') as f:
+        if self.args.input:
+            with open(self.args.input, 'r') as f:
                 lines = f.read().strip().split('\n')
                 line_number = 0
                 for line in lines:
                     if not self.args.threads:
                         result = self.hack(line)
                         if result:
-                            self.print_success(result)
+                            if not self.args.output:
+                                self.print_success(result)
+                            else:
+                                with open(self.args.output, 'a') as f:
+                                    f.write(result)
                     else:
                         process = threading.Thread(target=self.thread, args=[line_number, line])
                         process.start()
                     line_number += 1
-            print(self.args.threads)
-            if self.args.threads:
-                for credential in self.thread_credentials:
-                    self.print_success(credential)
         elif self.args.address:
             result = self.hack(self.args.address)
             if result:
-                self.print_success(result)
+                if not self.args.output:
+                    self.print_success(result)
+                else:
+                    with open(self.args.output, 'a') as f:
+                        f.write(result)
         else:
             self.print_error("No list or address specified!")
+            sys.exit(1)
 
 def main():
     cli = RomBusterCLI()
