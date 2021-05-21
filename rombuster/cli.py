@@ -84,7 +84,9 @@ class RomBusterCLI(RomBuster, Badges):
                         for credential in self.thread_credentials:
                             self.print_success(credential)
         elif self.args.address:
-            self.hack(self.args.address)
+            result = self.hack(self.args.address)
+            if result:
+                self.print_success(result)
         else:
             self.print_error("No list or address specified!")
 
