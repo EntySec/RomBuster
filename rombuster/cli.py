@@ -36,7 +36,7 @@ class RomBusterCLI(RomBuster, Badges):
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--threads', dest='threads', action='store_true', help='Use threads for fastest work. [best]')
     parser.add_argument('--output', dest='output', help='Output result to file.')
-    parser.add_argument('--input', dest='list', help='Input file of addresses.')
+    parser.add_argument('--input', dest='input', help='Input file of addresses.')
     parser.add_argument('--address', dest='address', help='Single address.')
     args = parser.parse_args()
 
