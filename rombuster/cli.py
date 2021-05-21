@@ -79,9 +79,8 @@ class RomBusterCLI(RomBuster, Badges):
                         process.start()
                     line_number += 1
                 if self.args.threads:
-                    if self.thread_credentials:
-                        for credential in self.thread_credentials:
-                            self.print_success(credential)
+                    for credential in self.thread_credentials:
+                        self.print_success(credential)
         elif self.args.address:
             result = self.hack(self.args.address)
             if result:
