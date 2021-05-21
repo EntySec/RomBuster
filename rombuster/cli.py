@@ -24,7 +24,6 @@
 # SOFTWARE.
 #
 
-import sys
 import argparse
 import threading
 
@@ -97,7 +96,6 @@ class RomBusterCLI(RomBuster, Badges):
                         f.write(f"{result}\n")
         else:
             self.print_error("No list or address specified!")
-            sys.exit(1)
 
 def main():
     cli = RomBusterCLI()
