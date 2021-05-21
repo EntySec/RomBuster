@@ -62,6 +62,7 @@ class RomBusterCLI(RomBuster, Badges):
         self.print_process(f"Initializing thread #{str(number)}...")
         result = self.hack(host)
         self.thread_credentials.append(result)
+        print(self.thread_credentials)
         self.print_information(f"Thread #{str(number)} completed.")
         
     def start(self):
