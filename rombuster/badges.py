@@ -36,3 +36,6 @@ class Badges:
 
     def print_warning(self, message):
         print(f"\033[1;33m[!]\033[0m {message}")
+
+    def print_information(self, message):
+        print(f"\033[1;77m[i]\033[0m {message}")
