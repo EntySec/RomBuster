@@ -65,7 +65,7 @@ class RomBusterCLI(RomBuster, Badges):
                 self.print_success(result)
             else:
                 with open(self.args.output, 'a') as f:
-                    f.write(result)
+                    f.write(f"{result}\n")
         self.print_information(f"Thread #{str(number)} completed.")
         
     def start(self):
@@ -81,7 +81,7 @@ class RomBusterCLI(RomBuster, Badges):
                                 self.print_success(result)
                             else:
                                 with open(self.args.output, 'a') as f:
-                                    f.write(result)
+                                    f.write(f"{result}\n")
                     else:
                         process = threading.Thread(target=self.thread, args=[line_number, line])
                         process.start()
@@ -93,7 +93,7 @@ class RomBusterCLI(RomBuster, Badges):
                     self.print_success(result)
                 else:
                     with open(self.args.output, 'a') as f:
-                        f.write(result)
+                        f.write(f"{result}\n")
         else:
             self.print_error("No list or address specified!")
             sys.exit(1)
