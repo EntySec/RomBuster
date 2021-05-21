@@ -8,6 +8,15 @@
 pip3 install git+https://github.com/EntySec/RomBuster
 ```
 
+## Usage
+
+```shell
+[*] (192.168.2.1) - exploiting ...
+[*] (192.168.2.1) - extracting password ...
+[+] (192.168.2.1) - vulnerable!
+[i] (192.168.2.1) - admin:SuperHardPassword999
+```
+
 ## Vulnerability disclosure
 
 Vulnerability that exploits **RomBuster** exists nowadays in some popular routers all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
