@@ -30,7 +30,7 @@ import requests
 from .deps.lzs_decompress import LZSDecompress, RingList
 
 
-class Exploit:
+class RomBuster:
     def connect(self, host):
         try:
             response = requests.get(f"http://{host}/rom-0", verify=False, timeout=1)
