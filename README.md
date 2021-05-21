@@ -135,3 +135,5 @@ Vulnerability that exploits **RomBuster** exists nowadays in some popular router
 * **ZyXEL ES-2024**
 * **ZyXEL Prestige P-2602HW**
 * **ZyXEL Prestige 782R**
+
+**NOTE:** All these devices still online and can be found at `Shodan`, `Censys` or `Zoomeye`, that means that vulnerability is not completely patched (very sad).
