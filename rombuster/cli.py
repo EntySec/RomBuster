@@ -26,11 +26,11 @@
 
 import argparse
 
-from .exploit import Exploit
+from .__main__ import RomBuster
 from .badges import Badges
 
 
-class RomBusterCLI(Exploit, Badges):
+class RomBusterCLI(RomBuster, Badges):
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--list', dest='list', help='Addresses list.')
