@@ -60,12 +60,8 @@ class RomBusterCLI(RomBuster, Badges):
                 lines = f.read().strip().split('\n')
                 for line in lines:
                     self.hack(line)
-            for credential in self.credentials:
-                self.print_success(credential)
         elif self.args.address:
             self.hack(self.args.address)
-            for credential in self.credentials:
-                self.print_information(credential)
         else:
             self.print_error("No list or address specified!")
 
