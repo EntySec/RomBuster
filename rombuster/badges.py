@@ -24,8 +24,18 @@
 # SOFTWARE.
 #
 
-from core.cli import CLI
+class Badges:
+    def print_process(self, message):
+        print(f"\033[1;34m[*]\033[0m {message}")
 
-if __name__ == '__main__':
-    cli = CLI()
-    cli.start()
+    def print_success(self, message):
+        print(f"\033[1;32m[+]\033[0m {message}")
+
+    def print_error(self, message):
+        print(f"\033[1;31m[-]\033[0m {message}")
+
+    def print_warning(self, message):
+        print(f"\033[1;33m[!]\033[0m {message}")
+
+    def print_information(self, message):
+        print(f"\033[1;77m[i]\033[0m {message}")

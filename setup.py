@@ -24,15 +24,26 @@
 # SOFTWARE.
 #
 
-class Badges:
-    def print_process(self, message):
-        print(f"\033[1;34m[*]\033[0m {message}")
+from setuptools import setup, find_packages
 
-    def print_success(self, message):
-        print(f"\033[1;32m[+]\033[0m {message}")
-
-    def print_error(self, message):
-        print(f"\033[1;31m[-]\033[0m {message}")
-
-    def print_warning(self, message):
-        print(f"\033[1;33m[!]\033[0m {message}")
+setup(name='rombuster',
+      version='1.0',
+      description='RomBuster',
+      url='http://github.com/EntySec/RomBuster',
+      author='EntySec',
+      author_email='entysec@gmail.com',
+      license='MIT',
+      python_requires='>=3.7.0',
+      packages=find_packages(),
+      entry_points={
+          "console_scripts": [
+                "rombuster = rombuster.cli:main"
+          ]
+      },
+      classifiers=[
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+      ],
+      zip_safe=False
+)

