@@ -1,4 +1,4 @@
-# RomBuster (`Coming soon`)
+# RomBuster
 
 **RomBuster** is a `RomPager` exploitation tool that allows to disclosure network router admin password.
 
