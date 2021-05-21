@@ -48,7 +48,7 @@ class RomBusterCLI(Exploit, Badges):
         elif self.args.address:
             self.exploit(self.args.address)
             for credential in self.credentials:
-                self.print_success(credential)
+                self.print_information(credential)
         else:
             self.print_error("No list or address specified!")
 
