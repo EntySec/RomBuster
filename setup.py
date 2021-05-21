@@ -37,7 +37,7 @@ setup(name='rombuster',
       packages=find_packages(),
       entry_points={
           "console_scripts": [
-                "rombuster = rombuster:main"
+                "rombuster = rombuster.cli:main"
           ]
       },
       classifiers=[
