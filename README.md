@@ -2,6 +2,12 @@
 
 **RomBuster** is a `RomPager` exploitation tool that allows to disclosure network router admin password.
 
+## Installation
+
+```shell
+pip3 install git+https://github.com/EntySec/RomBuster
+```
+
 ## Vulnerability disclosure
 
 Vulnerability that exploits **RomBuster** exists nowadays in some popular routers all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
