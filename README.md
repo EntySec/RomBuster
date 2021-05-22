@@ -1,6 +1,6 @@
 # RomBuster
 
-RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password or perform DoS attack on device.
+RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password.
 
 ## Features
 
@@ -21,7 +21,7 @@ To use RomBuster just type `rombuster` in your terminal.
 ```
 usage: rombuster [-h] [--threads] [--output OUTPUT] [--input INPUT] [--address ADDRESS]
 
-RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password or perform DoS attack on device.
+RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password.
 
 optional arguments:
   -h, --help         show this help message and exit
