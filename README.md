@@ -114,6 +114,10 @@ print(rombuster.exploit(device))
 
 Vulnerability that exploits **RomBuster** exists nowadays in some popular routers all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
 
+**Vulnerable RomPager versions:**
+
+* **RomPager/4.07**
+
 **Vulnerable devices:**
 
 * **AirLive WT-2000ARM** (`2.11.6.0(RE0.C29)3.7.6.1`)
