@@ -32,7 +32,7 @@ from .badges import Badges
 
 
 class RomBusterCLI(RomBuster, Badges):
-    description = "RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password."
+    description = "RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--threads', dest='threads', action='store_true', help='Use threads for fastest work. [best]')
     parser.add_argument('--output', dest='output', help='Output result to file.')
