@@ -109,7 +109,7 @@ print(rombuster.exploit(device))
 **output:**
 
 ```shell
-{'admin': 'SuperHardPassword999'}
+'SuperHardPassword999'
 ```
 
 ## Vulnerability details
