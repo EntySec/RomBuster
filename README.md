@@ -111,35 +111,3 @@ print(rombuster.exploit(device))
 ```shell
 'SuperHardPassword999'
 ```
-
-## Vulnerability details
-
-Vulnerability that exploits **RomBuster** exists nowadays in some popular network devices all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
-
-**Vulnerable RomPager versions:**
-
-* **RomPager/4.07**
-
-**Vulnerable devices:**
-
-* **AirLive WT-2000ARM**
-* **D-Link DSL-2520U**
-* **D-Link DSL-2640R**
-* **D-Link DSL-2740R**
-* **Huawei 520 HG**
-* **Huawei 530 TRA**
-* **Pentagram Cerberus P 6331-42**
-* **TP-Link TD-8816**
-* **TP-Link TD-8817**
-* **TP-LINK TD-8840T**
-* **TP-Link TD-W8901G**
-* **TP-Link TD-W8951ND**
-* **TP-Link TD-W8961ND**
-* **ZTE ZXV10 W300**
-* **ZTE ZXDSL 831CII**
-* **ZynOS**
-* **ZyXEL ES-2024**
-* **ZyXEL Prestige P-2602HW**
-* **ZyXEL Prestige 782R**
-
-**NOTE:** All these devices still online and can be found at `Shodan`, `Censys` or `Zoomeye`, that means that vulnerability is not completely patched (very sad).
