@@ -94,7 +94,7 @@ class RomBusterCLI(RomBuster, Badges):
                     with open(self.args.output, 'a') as f:
                         f.write(f"{result}\n")
         else:
-            self.print_error("No list or address specified!")
+            self.parser.print_help()
 
 def main():
     cli = RomBusterCLI()
