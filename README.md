@@ -4,8 +4,8 @@ RomBuster is a RomPager exploitation tool that allows to disclosure network devi
 
 ## Features
 
-* Exploits vulnerabilities in most popular router models with RomPager installation such as `D-Link`, `Zyxel`, `TP-Link` and `Huawei`.
-* Optimized to exploit multiple routers at one time from list with threading enabled.
+* Exploits vulnerabilities in most popular devices with RomPager installation such as `D-Link`, `Zyxel`, `TP-Link` and `Huawei`.
+* Optimized to exploit multiple devices at one time from list with threading enabled.
 * Simple CLI and API usage.
 
 ## Installation
@@ -35,7 +35,7 @@ optional arguments:
 
 ### Examples
 
-Let's hack my router just for fun.
+Let's hack my device with RomPager installation just for fun.
 
 ```shell
 rombuster --address 192.168.2.1
@@ -53,10 +53,10 @@ rombuster --address 192.168.2.1
 Let's try to use opened database of hosts with `--threads` for fast exploitation.
 
 ```shell
-rombuster --threads --input routers.txt --output passwords.txt
+rombuster --threads --input devices.txt --output passwords.txt
 ```
 
-It will exploit all devices in `routers.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
+It will exploit all devices in `devices.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
 
 **output:**
 
@@ -114,7 +114,7 @@ print(rombuster.exploit(device))
 
 ## Vulnerability details
 
-Vulnerability that exploits **RomBuster** exists nowadays in some popular routers all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
+Vulnerability that exploits **RomBuster** exists nowadays in some popular network devices all over the world. This vulnerability allows you to download `/rom-0` RomPager configuration file without authentication. **RomBuster** downloads this file, decodes it and giving you password of the router `admin`. Pretty easy way to access main network interface - router.
 
 **Vulnerable RomPager versions:**
 
