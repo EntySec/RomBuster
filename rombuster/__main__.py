@@ -45,7 +45,7 @@ class RomBuster:
 
             password = re.findall("([\040-\176]{5,})", result)
             if len(password):
-                return {'admin': password[0]}
+                return password[0]
             else:
                 return None
         else:
