@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 setup(name='rombuster',
       version='1.0',
-      description='RomBuster',
+      description='RomBuster is a RomPager exploitation tool that allows to disclosure network device admin password.',
       url='http://github.com/EntySec/RomBuster',
       author='EntySec',
       author_email='entysec@gmail.com',
