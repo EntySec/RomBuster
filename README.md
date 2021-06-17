@@ -1,10 +1,10 @@
 # RomBuster
 
-RomBuster is a RomPager exploitation tool that allows to disclosure network router admin password.
+RomBuster is a router exploitation tool that allows to disclosure network router admin password.
 
 ## Features
 
-* Exploits vulnerabilities in most popular routers with RomPager installation such as `D-Link`, `Zyxel`, `TP-Link` and `Huawei`.
+* Exploits vulnerabilities in most popular routers such as `D-Link`, `Zyxel`, `TP-Link` and `Huawei`.
 * Optimized to exploit multiple routers at one time from list with threading enabled.
 * Simple CLI and API usage.
 
@@ -21,8 +21,8 @@ To use RomBuster just type `rombuster` in your terminal.
 ```
 usage: rombuster [-h] [-t] [-o OUTPUT] [-i INPUT] [-a ADDRESS] [--api API]
 
-RomBuster is a RomPager exploitation tool that allows to disclosure network
-device admin password.
+RomBuster is a router exploitation tool that allows to disclosure network
+router admin password.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -38,7 +38,7 @@ optional arguments:
 
 ### Examples
 
-Let's hack my router with RomPager installation just for fun.
+Let's hack my router just for fun.
 
 ```shell
 rombuster -a 192.168.2.1
