@@ -41,7 +41,7 @@ optional arguments:
 Let's hack my device with RomPager installation just for fun.
 
 ```shell
-rombuster --address 192.168.2.1
+rombuster -a 192.168.2.1
 ```
 
 **output:**
