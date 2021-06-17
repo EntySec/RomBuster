@@ -76,7 +76,7 @@ class RomBusterCLI(RomBuster, Badges):
             try:
                 shodan = Shodan(self.args.api)
                 results = shodan.search(query='RomPager/4.07')
-                adresses = list()
+                addresses = list()
                 for result in results['matches']:
                     addresses.append(result['ip_str'] + ':' + str(result['port']))
             except Exception:
