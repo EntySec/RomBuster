@@ -149,7 +149,7 @@ print(rombuster.exploit(device))
 
 ## Other tools
 
-<p align="center">
+<p>
     <a href="https://github.com/EntySec/Ghost">
         <img src="https://img.shields.io/badge/EntySec-%20Ghost-3572a5.svg">
     </a>
