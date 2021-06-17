@@ -75,7 +75,7 @@ class RomBusterCLI(RomBuster, Badges):
             self.print_process("Authorizing Shodan by given API key...")
             try:
                 shodan = Shodan(self.args.api)
-                results = shodan.search(query='RomPager/1.04')
+                results = shodan.search(query='RomPager/4.07')
                 adresses = list()
                 for result in results['matches']:
                     addresses.append(result['ip_str'] + ':' + str(result['port']))
