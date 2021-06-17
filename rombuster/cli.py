@@ -83,7 +83,6 @@ class RomBusterCLI(RomBuster, Badges):
                 self.print_error("Failed to authorize Shodan!")
                 return
             self.print_success("Authorization successfully completed!")
-
             counter = 0
             for address in addresses:
                 if not self.args.threads:
@@ -98,7 +97,6 @@ class RomBusterCLI(RomBuster, Badges):
                     process = threading.Thread(target=self.thread, args=[counter, address])
                     process.start()
                 counter += 1
-
         elif self.args.input:
             with open(self.args.input, 'r') as f:
                 lines = f.read().strip().split('\n')
