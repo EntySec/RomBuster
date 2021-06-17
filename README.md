@@ -19,18 +19,21 @@ pip3 install git+https://github.com/EntySec/RomBuster
 To use RomBuster just type `rombuster` in your terminal.
 
 ```
-usage: rombuster [-h] [--threads] [--output OUTPUT] [--input INPUT]
-                 [--address ADDRESS]
+usage: rombuster [-h] [-t] [-o OUTPUT] [-i INPUT] [-a ADDRESS] [--api API]
 
 RomBuster is a RomPager exploitation tool that allows to disclosure network
 device admin password.
 
 optional arguments:
-  -h, --help         show this help message and exit
-  --threads          Use threads for fastest work.
-  --output OUTPUT    Output result to file.
-  --input INPUT      Input file of addresses.
-  --address ADDRESS  Single address.
+  -h, --help            show this help message and exit
+  -t, --threads         Use threads for fastest work.
+  -o OUTPUT, --output OUTPUT
+                        Output result to file.
+  -i INPUT, --input INPUT
+                        Input file of addresses.
+  -a ADDRESS, --address ADDRESS
+                        Single address.
+  --api API             Shodan API key for exploiting devices over Internet.
 ```
 
 ### Examples
