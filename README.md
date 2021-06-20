@@ -68,7 +68,7 @@ rombuster -t -i routers.txt -o passwords.txt
 
 ## API usage
 
-RomBuster also has their own Python API that can be invoked by importing RomBuster to your code:
+RomBuster also has their own Python API that can be invoked by importing RomBuster to your code.
 
 ```python
 from rombuster import RomBuster
