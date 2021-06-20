@@ -34,7 +34,11 @@ class RomBuster:
     @staticmethod
     def exploit(address):
         try:
-            response = requests.get(f"http://{address}/rom-0", verify=False, timeout=3)
+            response = requests.get(
+                f"http://{address}/rom-0",
+                verify=False,
+                timeout=3
+            )
         except Exception:
             return None
 
