@@ -44,7 +44,7 @@ class RomBuster:
 
         username = 'admin'
         if response.status_code == 200:
-            if:
+            if 1:
                 data = response.content[8568:]
                 result, window = LZSDecompress(data, RingList(2048))
 
