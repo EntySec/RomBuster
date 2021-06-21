@@ -37,7 +37,6 @@ from .badges import Badges
 
 
 class RomBusterCLI(RomBuster, Badges):
-    threads = list()
     thread_delay = 0.1
 
     description = "RomBuster is a router exploitation tool that allows to disclosure network router admin password."
@@ -64,8 +63,9 @@ class RomBusterCLI(RomBuster, Badges):
 
     def crack(self, addresses):
         line = "/-\|"
-        counter = 0
 
+        counter = 0
+        threads = list()
         for address in addresses:
             if counter >= len(line):
                 counter = 0
@@ -78,14 +78,11 @@ class RomBusterCLI(RomBuster, Badges):
                 thread = threading.Thread(target=self.thread, args=[address])
 
                 thread.start()
-                self.threads.append(thread)
+                threads.append(thread)
             counter += 1
-
-    def clean_up(self):
-        line = "/-\|"
+            
         counter = 0
-
-        for thread in self.threads:
+        for thread in threads:
             if counter >= len(line):
                 counter = 0
             self.print_process(f"Cleaning up... {line[counter]}", end='')
@@ -154,8 +151,6 @@ class RomBusterCLI(RomBuster, Badges):
         else:
             self.parser.print_help()
             return
-
-        self.clean_up()
         self.print_empty(end='')
 
 def main():
