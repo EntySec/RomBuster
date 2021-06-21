@@ -37,6 +37,7 @@ class RomBuster:
             response = requests.get(
                 f"http://{address}/rom-0",
                 verify=False,
+                stream=True,
                 timeout=3
             )
         except Exception:
