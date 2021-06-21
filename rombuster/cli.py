@@ -36,7 +36,7 @@ from .__main__ import RomBuster
 from .badges import Badges
 
 
-class RomBuster(RomBuster, Badges):
+class RomBusterCLI(RomBuster, Badges):
     threads = list()
     thread_delay = 0.1
 
