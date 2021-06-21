@@ -48,7 +48,7 @@ class RomBuster(RomBuster, Badges):
     parser.add_argument('-a', '--address', dest='address', help='Single address.')
     parser.add_argument('--shodan', dest='shodan', help='Shodan API key for exploiting devices over Internet.')
     parser.add_argument('--zoomeye', dest='zoomeye', help='ZoomEye API key for exploiting devices over Internet.')
-    parser.add_argument('-p', '--pages', dest='pages', help='Number of pages you want to get from ZoomEye.')
+    parser.add_argument('-p', '--pages', dest='pages', type=int, help='Number of pages you want to get from ZoomEye.')
     args = parser.parse_args()
 
     def thread(self, address):
@@ -146,8 +146,10 @@ class RomBuster(RomBuster, Badges):
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
             self.thread(self.args.address)
+
         else:
             self.parser.print_help()
+            return
 
         self.clean_up()
         self.print_empty(end='')
