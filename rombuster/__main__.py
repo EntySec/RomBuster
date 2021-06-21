@@ -44,7 +44,7 @@ class RomBuster:
                     timeout=3
                 )
             except Exception:
-                continue
+                return None
 
             if response.status_code == 200:
                 content = response.content
