@@ -136,5 +136,8 @@ class RomBuster(RomBuster, Badges):
         self.print_empty(end='')
 
 def main():
-    cli = RomBusterCLI()
-    cli.start()
+    try:
+        cli = RomBusterCLI()
+        cli.start()
+    except Exception:
+        pass
