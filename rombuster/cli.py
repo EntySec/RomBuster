@@ -104,7 +104,11 @@ class RomBuster(RomBuster, Badges):
                 }
                 addresses = list()
 
-                pages, page = divmod(self.args.pages, 20)
+                if self.args.pages:
+                    pages = int(self.args.pages)
+                else:
+                    pages = 100
+                pages, page = divmod(pages, 20)
                 if page != 0:
                     pages += 1
 
@@ -155,8 +159,5 @@ class RomBuster(RomBuster, Badges):
         self.print_empty(end='')
 
 def main():
-    try:
-        cli = RomBusterCLI()
-        cli.start()
-    except Exception:
-        pass
+    cli = RomBusterCLI()
+    cli.start()
