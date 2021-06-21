@@ -43,7 +43,7 @@ class RomBuster:
                     verify=False,
                     timeout=3
                 )
-            except http.client.RemoteDisconnected:
+            except Exception:
                 continue
 
             if response.status_code == 200:
