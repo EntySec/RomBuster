@@ -69,7 +69,7 @@ class RomBusterCLI(RomBuster, Badges):
         for address in addresses:
             if counter >= len(line):
                 counter = 0
-            self.print_process(f"Exploiting... ({address}) {line[counter]}")
+            self.print_process(f"Exploiting... ({address}) {line[counter]}", end='')
 
             if not self.args.threads:
                 self.thread(address)
