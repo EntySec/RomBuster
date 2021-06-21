@@ -27,6 +27,8 @@
 import re
 import requests
 
+import http.client
+
 from .deps.lzs_decompress import LZSDecompress, RingList
 
 
@@ -41,7 +43,7 @@ class RomBuster:
                     verify=False,
                     timeout=3
                 )
-            except requests.exceptions.ConnectionError:
+            except http.client.RemoteDisconnected:
                 continue
 
             if response.status_code == 200:
