@@ -43,7 +43,7 @@ class RomBuster:
                 )
             except requests.exceptions.ConnectionError:
                 continue
-                
+
             if response.status_code == 200:
                 content = response.content
             else:
