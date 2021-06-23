@@ -37,7 +37,7 @@ from .badges import Badges
 
 
 class RomBusterCLI(RomBuster, Badges):
-    thread_delay = 0.1
+    thread_delay = 1
 
     description = "RomBuster is a router exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
