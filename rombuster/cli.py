@@ -41,7 +41,6 @@ class RomBusterCLI(RomBuster, Badges):
 
     description = "RomBuster is a router exploitation tool that allows to disclosure network router admin password."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('-t', '--threads', dest='threads', action='store_true', help='Use threads for fastest work.')
     parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
     parser.add_argument('-i', '--input', dest='input', help='Input file of addresses.')
     parser.add_argument('-a', '--address', dest='address', help='Single address.')
@@ -65,30 +64,12 @@ class RomBusterCLI(RomBuster, Badges):
         line = "/-\|"
 
         counter = 0
-        threads = list()
         for address in addresses:
             if counter >= len(line):
                 counter = 0
             self.print_process(f"Exploiting... ({address}) {line[counter]}", end='')
 
-            if not self.args.threads:
-                self.thread(address)
-            else:
-                thread_delay(self.thread_delay)
-                thread = threading.Thread(target=self.thread, args=[address])
-
-                thread.start()
-                threads.append(thread)
-            counter += 1
-            
-        counter = 0
-        for thread in threads:
-            if counter >= len(line):
-                counter = 0
-            self.print_process(f"Cleaning up... {line[counter]}", end='')
-
-            if thread.is_alive():
-                thread.join()
+            self.thread(address)
             counter += 1
         
     def start(self):
