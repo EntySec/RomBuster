@@ -19,7 +19,7 @@ pip3 install git+https://github.com/EntySec/RomBuster
 To use RomBuster just type `rombuster` in your terminal.
 
 ```
-usage: rombuster [-h] [-t] [-o OUTPUT] [-i INPUT] [-a ADDRESS]
+usage: rombuster [-h] [-o OUTPUT] [-i INPUT] [-a ADDRESS]
                  [--shodan SHODAN] [--zoomeye ZOOMEYE] [-p PAGES]
 
 RomBuster is a router exploitation tool that allows to disclosure network
@@ -27,7 +27,6 @@ router admin password.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -t, --threads         Use threads for fastest work.
   -o OUTPUT, --output OUTPUT
                         Output result to file.
   -i INPUT, --input INPUT
@@ -52,20 +51,20 @@ rombuster -a 192.168.99.1
 
 **Exploiting routers from Internet**
 
-Let's try to use Shodan search engine to exploit routers over Internet, we will use it with `-t` for fast exploitation.
+Let's try to use Shodan search engine to exploit routers over Internet.
 
 ```shell
-rombuster -t --shodan PSKINdQe1GyxGgecYz2191H2JoS9qvgD
+rombuster --shodan PSKINdQe1GyxGgecYz2191H2JoS9qvgD
 ```
 
 **NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
 
 **Exploiting routers from input file**
 
-Let's try to use opened database of routers with `-t` for fast exploitation.
+Let's try to use opened database of routers.
 
 ```shell
-rombuster -t -i routers.txt -o passwords.txt
+rombuster -i routers.txt -o passwords.txt
 ```
 
 **NOTE:** It will exploit all routers in `routers.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
