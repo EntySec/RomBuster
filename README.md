@@ -5,7 +5,7 @@ RomBuster is a router exploitation tool that allows to disclosure network router
 ## Features
 
 * Exploits vulnerabilities in most popular routers such as `D-Link`, `Zyxel`, `TP-Link` and `Huawei`.
-* Optimized to exploit multiple routers at one time from list with threading enabled.
+* Optimized to exploit multiple routers at one time.
 * Simple CLI and API usage.
 
 ## Installation
