@@ -19,8 +19,8 @@ pip3 install git+https://github.com/EntySec/RomBuster
 To use RomBuster just type `rombuster` in your terminal.
 
 ```
-usage: rombuster [-h] [-o OUTPUT] [-i INPUT] [-a ADDRESS]
-                 [--shodan SHODAN] [--zoomeye ZOOMEYE] [-p PAGES]
+usage: rombuster [-h] [-o OUTPUT] [-i INPUT] [-a ADDRESS] [--shodan SHODAN]
+                 [--zoomeye ZOOMEYE] [-p PAGES]
 
 RomBuster is a router exploitation tool that allows to disclosure network
 router admin password.
