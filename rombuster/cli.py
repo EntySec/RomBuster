@@ -59,6 +59,8 @@ class RomBusterCLI(RomBuster, Badges):
             else:
                 with open(self.args.output, 'a') as f:
                     f.write(f"{result}\n")
+            return True
+        return False
 
     def crack(self, addresses):
         line = "/-\|"
@@ -133,7 +135,8 @@ class RomBusterCLI(RomBuster, Badges):
 
         elif self.args.address:
             self.print_process(f"Exploiting {self.args.address}...")
-            self.thread(self.args.address)
+            if not self.thread(self.args.address):
+                self.print_error(f"({self.args.address}) - is not vulnerable!")
 
         else:
             self.parser.print_help()
