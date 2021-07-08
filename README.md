@@ -103,7 +103,7 @@ There are all RomBuster basic functions that can be used to exploit specified ro
 from rombuster import RomBuster
 
 rombuster = RomBuster()
-creds = rombuster.exploit('192.168.99.100')
+creds = rombuster.exploit('192.168.99.1')
 
 print(creds)
 ```
