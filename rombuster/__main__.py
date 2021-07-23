@@ -57,4 +57,7 @@ class RomBuster:
             if username is None and password is None:
                 return None
 
-            return 'admin', 'admin'
+            if not username and not password:
+                return 'admin', 'admin'
+            
+            return username, password
