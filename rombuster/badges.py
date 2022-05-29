@@ -26,26 +26,74 @@
 
 
 class Badges:
+    """ Subclass of rombuster module.
+
+    This subclass of rombuster module is intended for providing
+    some message printing methods.
+    """
+
     @staticmethod
-    def print_empty(message="", end='\n'):
+    def print_empty(message: str = "", end: str = '\n') -> None:
+        """ Print string with empty start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
         print(f"\033[1K\r{message}", end=end)
 
     @staticmethod
-    def print_process(message, end='\n'):
+    def print_process(message: str, end: str = '\n') -> None:
+        """ Print string with [*] start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
         print(f"\033[1K\r\033[1;34m[*]\033[0m {message}", end=end)
 
     @staticmethod
-    def print_success(message, end='\n'):
+    def print_success(message: str, end: str = '\n') -> None:
+        """ Print string with [+] start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
         print(f"\033[1K\r\033[1;32m[+]\033[0m {message}", end=end)
 
     @staticmethod
-    def print_error(message, end='\n'):
+    def print_error(message: str, end: str = '\n') -> None:
+        """ Print string with [-] start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
         print(f"\033[1K\r\033[1;31m[-]\033[0m {message}", end=end)
 
     @staticmethod
-    def print_warning(message, end='\n'):
+    def print_warning(message: str, end: str = '\n') -> None:
+        """ Print string with [!] start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
         print(f"\033[1K\r\033[1;33m[!]\033[0m {message}", end=end)
 
     @staticmethod
-    def print_information(message, end='\n'):
+    def print_information(message: str, end: str = '\n') -> None:
+        """ Print string with [i] start.
+
+        :param str message: message to print
+        :param str end: string to print after the message
+        :return None: None
+        """
+
         print(f"\033[1K\r\033[1;77m[i]\033[0m {message}", end=end)
