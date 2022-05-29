@@ -42,6 +42,7 @@ setup(name='rombuster',
       },
       install_requires=[
           'shodan',
+          'pex @ git+https://github.com/EntySec/Pex'
       ],
       zip_safe=False
 )
