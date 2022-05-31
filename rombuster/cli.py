@@ -42,7 +42,11 @@ class RomBusterCLI(RomBuster, Badges):
 
     thread_delay = 2
 
-    description = "RomBuster is a router exploitation tool that allows to disclosure network router admin password."
+    description = (
+        'RomBuster is a router exploitation tool that allows'
+        ' to disclosure network router admin password.'
+    )
+
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
     parser.add_argument('-i', '--input', dest='input', help='Input file of addresses.')
