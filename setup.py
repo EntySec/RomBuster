@@ -28,7 +28,7 @@ setup(name='rombuster',
       version='1.0.0',
       description=(
           'RomBuster is a router exploitation tool that allows'
-          'to disclosure network router admin password.'
+          ' to disclosure network router admin password.'
       ),
       url='https://github.com/EntySec/RomBuster',
       author='EntySec',
