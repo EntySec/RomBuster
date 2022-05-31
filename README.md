@@ -69,8 +69,7 @@ Let's try to use Shodan search engine to exploit routers over Internet.
 rombuster --shodan PSKINdQe1GyxGgecYz2191H2JoS9qvgD
 ```
 
-**NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own,
-be free to use all our resources for free :)
+**NOTE:** Given Shodan API key (`PSKINdQe1GyxGgecYz2191H2JoS9qvgD`) is my PRO API key, you can use this key or your own, be free to use all our resources for free :)
 
 **Exploiting routers from input file**
 
@@ -80,8 +79,7 @@ Let's try to use opened database of routers.
 rombuster -i routers.txt -o passwords.txt
 ```
 
-**NOTE:** It will exploit all routers in `routers.txt` list by their addresses and save all obtained passwords
-to `passwords.txt`.
+**NOTE:** It will exploit all routers in `routers.txt` list by their addresses and save all obtained passwords to `passwords.txt`.
 
 ## API usage
 
