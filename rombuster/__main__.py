@@ -38,6 +38,9 @@ class RomBuster(String):
     from the obtained rom-0 file.
     """
 
+    def __init__(self):
+        super().__init__()
+
     @staticmethod
     def exploit(address: str) -> tuple:
         """ Exploit the vulnerability in RomPager and extract credentials.
