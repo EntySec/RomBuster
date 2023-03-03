@@ -27,7 +27,7 @@ import socket
 import struct
 
 
-class Trigger:
+class Trigger(object):
     """ Subclass of rombuster module.
 
     This subclass of rombuster is intended for providing
@@ -41,6 +41,8 @@ class Trigger:
         :param str host: host to connect to
         :return None: None
         """
+
+        super().__init__()
 
         self.host = host
         self.port = 32764
