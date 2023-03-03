@@ -40,21 +40,24 @@ class RomBusterCLI(RomBuster, Badges):
     command-line interface for RomBuster.
     """
 
-    thread_delay = 2
+    def __init__(self):
+        super().__init__()
 
-    description = (
-        'RomBuster is a router exploitation tool that allows'
-        ' to disclosure network router admin password.'
-    )
+        self.thread_delay = 2
 
-    parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
-    parser.add_argument('-i', '--input', dest='input', help='Input file of addresses.')
-    parser.add_argument('-a', '--address', dest='address', help='Single address.')
-    parser.add_argument('--shodan', dest='shodan', help='Shodan API key for exploiting devices over Internet.')
-    parser.add_argument('--zoomeye', dest='zoomeye', help='ZoomEye API key for exploiting devices over Internet.')
-    parser.add_argument('-p', '--pages', dest='pages', type=int, help='Number of pages you want to get from ZoomEye.')
-    args = parser.parse_args()
+        self.description = (
+            'RomBuster is a router exploitation tool that allows'
+            ' to disclosure network router admin password.'
+        )
+
+        self.parser = argparse.ArgumentParser(description=description)
+        self.parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
+        self.parser.add_argument('-i', '--input', dest='input', help='Input file of addresses.')
+        self.parser.add_argument('-a', '--address', dest='address', help='Single address.')
+        self.parser.add_argument('--shodan', dest='shodan', help='Shodan API key for exploiting devices over Internet.')
+        self.parser.add_argument('--zoomeye', dest='zoomeye', help='ZoomEye API key for exploiting devices over Internet.')
+        self.parser.add_argument('-p', '--pages', dest='pages', type=int, help='Number of pages you want to get from ZoomEye.')
+        self.args = self.parser.parse_args()
 
     def thread(self, address: str) -> bool:
         """ Start new thread for the specified address.
