@@ -50,7 +50,7 @@ class RomBusterCLI(RomBuster, Badges):
             ' to disclosure network router admin password.'
         )
 
-        self.parser = argparse.ArgumentParser(description=description)
+        self.parser = argparse.ArgumentParser(description=self.description)
         self.parser.add_argument('-o', '--output', dest='output', help='Output result to file.')
         self.parser.add_argument('-i', '--input', dest='input', help='Input file of addresses.')
         self.parser.add_argument('-a', '--address', dest='address', help='Single address.')
