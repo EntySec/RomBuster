@@ -30,7 +30,7 @@ from shodan import Shodan
 from time import sleep as thread_delay
 
 from .__main__ import RomBuster
-from .badges import Badges
+from badges import Badges
 
 
 class RomBusterCLI(RomBuster, Badges):
