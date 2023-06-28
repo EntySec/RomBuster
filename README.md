@@ -7,6 +7,9 @@
     <a href="https://github.com/EntySec/RomBuster">
         <img src="https://img.shields.io/badge/language-Python-blue.svg">
     </a>
+    <a href="https://github.com/EntySec/RomBuster/forks">
+        <img src="https://img.shields.io/github/forks/EntySec/RomBuster?color=green">
+    </a>
     <a href="https://github.com/EntySec/RomBuster/stargazers">
         <img src="https://img.shields.io/github/stars/EntySec/RomBuster?color=yellow">
     </a>
