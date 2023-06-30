@@ -14,7 +14,7 @@
         <img src="https://img.shields.io/github/stars/EntySec/RomBuster?color=yellow">
     </a>
     <a href="https://www.codefactor.io/repository/github/EntySec/RomBuster">
-        <img src="https://www.codefactor.io/repository/github/EntySec/RomBuster/badge" />
+        <img src="https://www.codefactor.io/repository/github/EntySec/RomBuster/badge">
     </a>
 </p>
 
