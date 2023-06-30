@@ -183,5 +183,5 @@ def main() -> None:
     try:
         cli = RomBusterCLI()
         cli.start()
-    except Exception:
+    except BaseException:
         pass
