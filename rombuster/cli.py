@@ -173,7 +173,6 @@ class RomBusterCLI(RomBuster, Badges):
             return
         self.print_empty(end='')
 
-
 def main() -> None:
     """ RomBuster command-line interface.
 
