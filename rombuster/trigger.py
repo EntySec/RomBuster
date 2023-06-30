@@ -148,7 +148,7 @@ class Trigger(object):
                             username = value
                         elif variable == 'http_password':
                             password = value
-                except Exception:
+                except BaseException:
                     pass
 
             return username, password
