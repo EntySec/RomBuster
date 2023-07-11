@@ -41,8 +41,7 @@ class RomBuster(String):
     def __init__(self) -> None:
         super().__init__()
 
-    @staticmethod
-    def exploit(address: str) -> tuple:
+    def exploit(self, address: str) -> tuple:
         """ Exploit the vulnerability in RomPager and extract credentials.
 
         :param str address: device address
