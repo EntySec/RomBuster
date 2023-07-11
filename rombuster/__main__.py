@@ -58,7 +58,7 @@ class RomBuster(String):
 
             username = 'admin'
             data = response.content[8568:]
-            result, window = self.lzs_decompress(data)
+            result = self.lzs_decompress(data)
 
             password = re.findall("([\040-\176]{5,})", result)
             if len(password):
