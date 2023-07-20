@@ -68,7 +68,7 @@ class RomBuster(String):
             username, password = trigger.extract_credentials()
 
             if username is None and password is None:
-                return None, None
+                return
 
             if not username and not password:
                 return 'admin', 'admin'
