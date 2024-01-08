@@ -1,22 +1,10 @@
 # RomBuster
 
-<p>
-    <a href="https://entysec.com">
-        <img src="https://img.shields.io/badge/developer-EntySec-blue.svg">
-    </a>
-    <a href="https://github.com/EntySec/RomBuster">
-        <img src="https://img.shields.io/badge/language-Python-blue.svg">
-    </a>
-    <a href="https://github.com/EntySec/RomBuster/forks">
-        <img src="https://img.shields.io/github/forks/EntySec/RomBuster?color=green">
-    </a>
-    <a href="https://github.com/EntySec/RomBuster/stargazers">
-        <img src="https://img.shields.io/github/stars/EntySec/RomBuster?color=yellow">
-    </a>
-    <a href="https://www.codefactor.io/repository/github/EntySec/RomBuster">
-        <img src="https://www.codefactor.io/repository/github/EntySec/RomBuster/badge">
-    </a>
-</p>
+[![Developer](https://img.shields.io/badge/developer-EntySec-blue.svg)](https://entysec.com)
+[![Language](https://img.shields.io/badge/language-Python-blue.svg)](https://github.com/EntySec/RomBuster)
+[![Forks](https://img.shields.io/github/forks/EntySec/RomBuster?style=flat&color=green)](https://github.com/EntySec/RomBuster/forks)
+[![Stars](https://img.shields.io/github/stars/EntySec/RomBuster?style=flat&color=yellow)](https://github.com/EntySec/RomBuster/stargazers)
+[![CodeFactor](https://www.codefactor.io/repository/github/EntySec/RomBuster/badge)](https://www.codefactor.io/repository/github/EntySec/RomBuster)
 
 RomBuster is a router exploitation tool that allows to disclosure network router admin password.
 
