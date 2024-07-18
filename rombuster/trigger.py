@@ -42,8 +42,6 @@ class Trigger(object):
         :return None: None
         """
 
-        super().__init__()
-
         self.host = host
         self.port = 32764
 
